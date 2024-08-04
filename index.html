@@ -31,10 +31,51 @@
         <figcaption>"Front-end developer and avid reader."</figcaption>
       </div>
       <div class="social-buttons">
-        <button>GitHub</button><button>Frontend Mentor</button
-        ><button>LinkedIn</button><button>Twitter</button
-        ><button>Instagram</button>
+        <button id="githubButton">GitHub</button>
+        <button id="frontendMentorButton">Frontend Mentor</button>
+        <button id="linkedinButton">LinkedIn</button>
+        <button id="twitterButton">Twitter</button>
+        <button id="instagramButton">Instagram</button>
       </div>
     </main>
   </body>
+
+  <script>
+    // Reusable function to open a link in a new tab
+    function openLinkInNewTab(url) {
+      window.open(url, "_blank");
+    }
+
+    // Function to handle button click and Enter key press
+    function handleButtonAction(event, url) {
+      if (
+        event.type === "click" ||
+        (event.type === "keydown" && event.key === "Enter")
+      ) {
+        openLinkInNewTab(url);
+      }
+    }
+
+    // Map button IDs to their respective URLs
+    const buttonLinks = {
+      githubButton: "https://github.com",
+      frontendMentorButton: "https://www.frontendmentor.io",
+      linkedinButton: "https://www.linkedin.com",
+      twitterButton: "https://twitter.com",
+      instagramButton: "https://www.instagram.com",
+    };
+
+    // Iterate over buttonLinks object to add event listeners to each button
+    for (const buttonId in buttonLinks) {
+      const button = document.getElementById(buttonId);
+      const url = buttonLinks[buttonId];
+
+      button.addEventListener("click", (event) =>
+        handleButtonAction(event, url)
+      );
+      button.addEventListener("keydown", (event) =>
+        handleButtonAction(event, url)
+      );
+    }
+  </script>
 </html>
